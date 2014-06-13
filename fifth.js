@@ -58,6 +58,8 @@ $(function(){
     name_to_circle['Ebm'] = name_to_circle['D#m'];
     name_to_circle['Bbm'] = name_to_circle['A#m'];
 
+    chord_text = paper.text(center_x, center_y, "").attr('font-size', 50);
+
     var prev = null;
     window.showFifth = function(chord){
         if(prev != null){
@@ -65,9 +67,11 @@ $(function(){
         }
         console.log(chord);
         if(chord == "N"){
+            chord_text.attr('text', '');
             prev = null;
             return;
         }
+        chord_text.attr('text', chord);
         var canonical_name = chord.match(/^([A-Gb#]{1,2}m?)/)[1] || null;
         prev = name_to_circle[canonical_name];
         if(prev == null){
