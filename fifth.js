@@ -50,6 +50,12 @@ $(function(){
         paper.text(x, y, name).attr('font-size', r3);
     }
 
+    // alias
+    name_to_circle['Eb'] = name_to_circle['D#'];
+    name_to_circle['Bb'] = name_to_circle['A#'];
+    name_to_circle['Ebm'] = name_to_circle['D#m'];
+    name_to_circle['Bbm'] = name_to_circle['A#m'];
+
     var prev = null;
     window.showFifth = function(chord){
         if(prev != null){
