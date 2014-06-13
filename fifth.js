@@ -108,11 +108,11 @@ $(function(){
         var i = prev.intcode;
         marker[i].attr("fill", "red");
         if(prev.major){
-            marker[(i + 4) % 12].attr("fill", "red");
+            marker[(i + 4) % 12].attr("fill", "red"); // 半音の4は五度圏の4 (7 * 4 mod 12 == 4)
         }else{
-            marker[(i + 3) % 12].attr("fill", "red");
+            marker[(i + 9) % 12].attr("fill", "red"); // 半音の3は五度圏の9 (7 * 9 mod 12 == 3)
         }
-        marker[(i + 7) % 12].attr("fill", "red");
+        marker[(i + 1) % 12].attr("fill", "red"); // 半音の7は五度圏の1 (7 * 1 mod 12 == 7)
         // TODO: seventhのサポート、augやdimのサポート？
     }
 });
