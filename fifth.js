@@ -15,13 +15,15 @@ $(function(){
 
     var center_x = 200;
     var center_y = 200;
-    // Wolfram: solve(r1 + r2 = 200, sin(15 deg) * r2 = r1 )
+    // Wolfram: solve(r1 + r2 = 200, sin(15 deg) * r2 = r1, r3 + r4 = 200 - r1 * 2 + 20, sin(15 deg) * r4 = r3 ) 20はめり込み量
     var r1 = 41.121;
     var r2 = center_x - r1;
-    // Wolfram: solve(r3 + r4 = 200 - 41.121 * 2 + 20, sin(15 deg) * r4 = r3 ) 20はめり込み量
     var merikomi = 20;
     var r3 = 28.323;
     var r4 = r2 - r1 + merikomi - r3;
+    var r5 = 10.0;
+    var r6 = r4 - r3;
+    // Wolfram: solve(r1 + r2 = 200 - 41.121 * 2 + 20, sin(15 deg) * r2 = r1 ) 20はめり込み量
 
     var chord_names = [
         // major
@@ -29,6 +31,18 @@ $(function(){
         // minor
         "Am", "Em", "Bm", "F#m", "C#m", "G#m", "D#m", "A#m", "Fm", "Cm", "Gm", "Dm"];
     var name_to_circle = [];
+
+    // コード構成音表示用マーカー
+    var marker = [];
+    for(var i=0; i < 12; i++){
+        var th = 30 * i * 2 * 3.14 / 360;
+        var x = center_x + Math.sin(th) * r6;
+        var y = center_y - Math.cos(th) * r6
+        var c = paper.circle(x, y, r5);
+        c.attr("stroke", "none");
+        c.attr("fill", "none");
+        marker.push(c);
+    }
 
     // major
     for(var i=0; i < 12; i++){
