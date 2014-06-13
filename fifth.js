@@ -59,8 +59,11 @@ $(function(){
             return;
         }
         var canonical_name = chord.match(/^([A-Gb#]{1,2}m?)/)[1] || null;
-        console.log(canonical_name);
         prev = name_to_circle[canonical_name];
+        if(prev == null){
+            console.log(canonical_name + " not found, ignored(FIXME)");
+            return;
+        }
         prev.attr("fill", "#fcc");
     }
 });
