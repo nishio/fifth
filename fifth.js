@@ -50,7 +50,11 @@ $(function(){
         var x = center_x + Math.sin(th) * r2;
         var y = center_y - Math.cos(th) * r2;
         var name = chord_names[i];
-        name_to_circle[name] = paper.circle(x, y, r1).attr("fill", "#eee");
+        var c = paper.circle(x, y, r1);
+        c.attr("fill", "#eee");
+        c.intcode = i;
+        c.major = true;
+        name_to_circle[name] = c;
         paper.text(x, y, name).attr('font-size', r1);
     }
 
@@ -60,7 +64,11 @@ $(function(){
         var x = center_x + Math.sin(th) * r4;
         var y = center_y - Math.cos(th) * r4
         var name = chord_names[i + 12];
-        name_to_circle[name] = paper.circle(x, y, r3).attr("fill", "#eee");
+        var c = paper.circle(x, y, r3);
+        c.attr("fill", "#eee");
+        c.intcode = i;
+        c.major = false;
+        name_to_circle[name] = c;
         paper.text(x, y, name).attr('font-size', r3);
     }
 
@@ -93,5 +101,17 @@ $(function(){
             return;
         }
         prev.attr("fill", "#fcc");
+
+        // chordの構成音の可視化
+        marker.forEach(function(x){x.attr("fill", "none")});;
+        var i = prev.intcode;
+        marker[i].attr("fill", "red");
+        if(prev.major){
+            marker[(i + 4) % 12].attr("fill", "red");
+        }else{
+            marker[(i + 3) % 12].attr("fill", "red");
+        }
+        marker[(i + 7) % 12].attr("fill", "red");
+        // TODO: seventhのサポート、augやdimのサポート？
     }
 });
