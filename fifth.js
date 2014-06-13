@@ -51,8 +51,10 @@ $(function(){
     }
 
     // alias
+    name_to_circle['Ab'] = name_to_circle['G#'];
     name_to_circle['Eb'] = name_to_circle['D#'];
     name_to_circle['Bb'] = name_to_circle['A#'];
+    name_to_circle['Abm'] = name_to_circle['G#m'];
     name_to_circle['Ebm'] = name_to_circle['D#m'];
     name_to_circle['Bbm'] = name_to_circle['A#m'];
 
