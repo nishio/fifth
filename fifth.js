@@ -25,9 +25,9 @@ $(function(){
 
     var chord_names = [
         // major
-        "C", "G", "D", "A", "E", "B", "F#", "C#", "Ab", "Eb", "Bb", "F",
+        "C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "F",
         // minor
-        "Am", "Em", "Bm", "F#m", "C#m", "Abm", "Ebm", "Bbm", "Fm", "Cm", "Gm", "Dm"];
+        "Am", "Em", "Bm", "F#m", "C#m", "G#m", "D#m", "A#m", "Fm", "Cm", "Gm", "Dm"];
     var name_to_circle = [];
 
     // major
@@ -48,7 +48,6 @@ $(function(){
         var name = chord_names[i + 12];
         name_to_circle[name] = paper.circle(x, y, r3).attr("fill", "#eee");
         paper.text(x, y, name).attr('font-size', r3);
-
     }
 
     var prev = null;
