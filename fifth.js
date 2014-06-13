@@ -1,5 +1,16 @@
 $(function(){
-    console.log('loaded');
+    // GETパラメータをsongleのURLとして使う
+    var songle_url = location.search.substring(1);
+    if(songle_url == ""){
+        // 地上の星にフォールバック
+        songle_url = "http://songle.jp/songs/www.youtube.com%2Fwatch%3Fv=v2SlpjCz7uE";
+    }
+    $("#songle-embedded-player").attr("data-url", songle_url);
+    $("#songle-link").attr("href", songle_url);
+    $('body').append('<script src="http://assets.songle.jp/assets/embedded_v2.js" type="text/javascript"></script>')
+    .append('<script src="http://assets.songle.jp/assets/songle_api_v2.js" type="text/javascript"></script>')
+    .append('<script src="api_example.js" type="text/javascript"></script>');
+
     var paper = Raphael(410, 0, 400, 400);
 
     var center_x = 200;
