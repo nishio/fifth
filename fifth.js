@@ -1,24 +1,16 @@
 $(function(){
     console.log('loaded');
     var paper = Raphael(410, 0, 400, 400);
-    paper.add([
-        {
-            type: "rect",
-            x: 0,
-            y: 0,
-            width: 400,
-            height: 400,
-            fill: "#eee"
-        }]);
 
     var center_x = 200;
     var center_y = 200;
     // Wolfram: solve(r1 + r2 = 200, sin(15 deg) * r2 = r1 )
     var r1 = 41.121;
     var r2 = center_x - r1;
-    // Wolfram: solve(r1 + r2 = 200 - 41.121 * 2, sin(15 deg) * r2 = r1 )
-    var r3 = 24.2116;
-    var r4 = r2 - r1 - r3;
+    // Wolfram: solve(r3 + r4 = 200 - 41.121 * 2 + 20, sin(15 deg) * r4 = r3 ) 20はめり込み量
+    var merikomi = 20;
+    var r3 = 28.323;
+    var r4 = r2 - r1 + merikomi - r3;
 
     var chord_names = [
         // major
@@ -33,7 +25,7 @@ $(function(){
         var x = center_x + Math.sin(th) * r2;
         var y = center_y - Math.cos(th) * r2;
         var name = chord_names[i];
-        name_to_circle[name] = paper.circle(x, y, r1);
+        name_to_circle[name] = paper.circle(x, y, r1).attr("fill", "#eee");
         paper.text(x, y, name).attr('font-size', r1);
     }
 
@@ -43,7 +35,7 @@ $(function(){
         var x = center_x + Math.sin(th) * r4;
         var y = center_y - Math.cos(th) * r4
         var name = chord_names[i + 12];
-        name_to_circle[name] = paper.circle(x, y, r3);
+        name_to_circle[name] = paper.circle(x, y, r3).attr("fill", "#eee");
         paper.text(x, y, name).attr('font-size', r3);
 
     }
