@@ -90,6 +90,7 @@ $(function(){
         console.log(chord);
         if(chord == "N"){
             chord_text.attr('text', '');
+            marker.forEach(function(x){x.attr("fill", "none")});;
             prev = null;
             return;
         }
