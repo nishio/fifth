@@ -694,6 +694,8 @@ var runSongleEmbeddedPlayerAPIExample3 =
             currentColor = COLORS[ currentChord ]
             nextColor = COLORS[ nextChord ]
 
+            window.showFifth(e.chord.name);
+
             createjs.Tween.get(prevColor).to(currentColor, 250)
               .addEventListener("change",
                 function(e)
