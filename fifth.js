@@ -66,7 +66,7 @@ $(function(){
         var name = chord_names[i + 12];
         var c = paper.circle(x, y, r3);
         c.attr("fill", "#eee");
-        c.intcode = i;
+        c.intcode = (i + 3) % 12; // minorの根音はmajorより五度圏で3つ先を進んでいる
         c.major = false;
         name_to_circle[name] = c;
         paper.text(x, y, name).attr('font-size', r3);
